@@ -1,0 +1,72 @@
+---
+globalTools:
+  ShimGen:
+    dlUri: https://downloads.haskell.org/~ghcup/shimgen/shim-2.exe
+    dlHash: 7c55e201f71860c5babea886007c8fa44b861abf50d1c07e5677eb0bda387a70
+toolRequirements:
+  GHC:
+    unknown_version:
+      Linux_Debian:
+        ">= 12":
+          distroPKGs:
+          - build-essential
+          - curl
+          - libffi-dev
+          notes: ''
+        unknown_versioning:
+          distroPKGs:
+          - libncurses6
+          - libtinfo6
+          - pkg-config
+          notes: ''
+      Windows:
+        unknown_versioning:
+          distroPKGs: []
+          notes: On Windows, msys2 should already have been set up during the installation,
+            so most users should just proceed.
+            If you are installing manually, make sure to have a working mingw64 toolchain and
+            shell.
+ghcupDownloads:
+  GHC:
+    9.4.8:
+      viTags:
+      - base-4.17.2.1
+      - Recommended
+      viChangeLog: https://downloads.haskell.org/~ghc/9.4.8/docs/users_guide/9.4.8-notes.html
+      viSourceDL:
+        dlUri: https://downloads.haskell.org/~ghc/9.4.8/ghc-9.4.8-src.tar.xz
+        dlSubdir: ghc-9.4.8
+        dlHash: 0bf407eb67fe3e3c24b0f4c8dea8cb63e07f63ca0f76cf2058565143507ab85e
+      viTestDL:
+        dlUri: https://downloads.haskell.org/ghc/9.4.8/ghc-9.4.8-testsuite.tar.xz
+        dlSubdir: ghc-9.4.8/testsuite
+        dlHash: ac45dd44b097707a2717058ab2cfff22777ec0f31bfa3f54bf60e18b2dd63c95
+      viArch:
+        A_64:
+          Linux_Debian:
+            '>= 11': &ghc-948-64-deb11
+              dlUri: https://downloads.haskell.org/~ghc/9.4.8/ghc-9.4.8-x86_64-deb11-linux.tar.xz
+              dlSubdir: ghc-9.4.8-x86_64-unknown-linux
+              dlHash: 2743629d040f3213499146cb5154621d6f25e85271019afc9b9009e04d66bf6c
+            unknown_versioning: *ghc-948-64-deb11
+  Stack:
+    2.7.3:
+      viTags:
+        - old
+      viChangeLog: https://github.com/commercialhaskell/stack/blob/master/ChangeLog.md#v273
+      viReleaseDay: 2022-02-02
+      viArch:
+        A_64:
+          Linux_UnknownLinux:
+            unknown_versioning: &stack-273-64
+              dlUri: https://github.com/commercialhaskell/stack/releases/download/v2.7.3/stack-2.7.3-linux-x86_64.tar.gz
+              dlHash: a6c090555fa1c64aa61c29aa4449765a51d79e870cf759cde192937cd614e72b
+              dlSubdir:
+                RegexDir: "stack-.*"
+        A_32:
+          Linux_UnknownLinux:
+            unknown_versioning: &stack-273-32
+              dlUri: https://downloads.haskell.org/ghcup/unofficial-bindists/stack/2.7.3/stack-2.7.3-linux-i386.tar.gz
+              dlHash: 507730fcee5289c90811633d48d3ec437f165eec9c700908bbfc1e21c226effd
+          Linux_Alpine:
+            unknown_versioning: *stack-273-32
